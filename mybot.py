@@ -9,11 +9,11 @@ GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 DISCORD_TOKEN = os.getenv('TOKEN')
 
 # Initialize the OpenAI client
-openai_client = OpenAI(api_key=OPENAI_KEY)
+groq_client = Groq(api_key=GROQ_API_KEY)
 
-def call_openai(question):
-    completion = openai_client.chat.completions.create(
-        model="gpt-4o",
+def call_groq(question):
+    completion = groq_client.chat.completions.create(
+        model="llama-3.3-0b-versatile",
         messages=[
              {
                  "role": "user",
@@ -48,7 +48,7 @@ async def on_message(message):
         print(f"Message: {message.content}")                
         message_content = message.content.split("$question")[1]
         print(f"Question: {message_content}")    
-        response = call_openai(message_content)   
+        response = call_groq(message_content)   
         print(f"Assistant: {response}")    
         print("---")
         await message.channel.send(response)
