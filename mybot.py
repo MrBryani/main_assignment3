@@ -1,11 +1,11 @@
 from dotenv import load_dotenv
-from openai import OpenAI
+from groq import Groq
 import discord
 import os
 
 # Load environment variables from .env file
 load_dotenv()
-OPENAI_KEY = os.getenv('OPENAI_KEY')
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 DISCORD_TOKEN = os.getenv('TOKEN')
 
 # Initialize the OpenAI client
